@@ -100,7 +100,7 @@ def main():
     # App header with subtle description
     col1, col2 = st.columns([3, 1])  # 3: content column, 1: logo column
     with col2:
-        st.image("logo.jpg", use_column_width=True)  # Your logo.jpg displayed here
+        st.image("logo.jpg", use_container_width=True)  # Your logo.jpg displayed here
     
     with col1:
         # App header with subtle description
