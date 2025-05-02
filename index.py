@@ -4,12 +4,16 @@ from dotenv import load_dotenv
 from google import genai
 import re
 
+
+
+
 # Load environment variables
 load_dotenv()
 api_key = os.getenv('GEMINI_API_KEY')
 if not api_key:
     st.error("API Key is missing. Please set GEMINI_API_KEY in your .env file.")
     st.stop()
+
 
 # Initialize Gemini API client
 client = genai.Client(api_key=api_key)
@@ -94,12 +98,18 @@ def main():
         st.session_state.show_results = False
 
     # App header with subtle description
-    st.title("☕ Daily Caffeine Tracker")
-    st.markdown("""
-        <p style='font-size: 1.1rem; color: #666; margin-bottom: 2rem;'>
-        Track your total caffeine consumption from multiple drinks
-        </p>
-    """, unsafe_allow_html=True)
+    col1, col2 = st.columns([3, 1])  # 3: content column, 1: logo column
+    with col2:
+        st.image("logo.jpg", use_column_width=True)  # Your logo.jpg displayed here
+    
+    with col1:
+        # App header with subtle description
+        st.title("☕ Daily Caffeine Tracker")
+        st.markdown("""
+            <p style='font-size: 1.1rem; color: #666; margin-bottom: 2rem;'>
+            Track your total caffeine consumption from multiple drinks
+            </p>
+        """, unsafe_allow_html=True)
 
     # Personal Information Section
     st.markdown("### Personal Information")
